@@ -1,17 +1,49 @@
-let display=document.getElementsByClassName('value');
+// getting the input element 
+let inputField = document.querySelector('#output');
 
-let calculator =Array.from(document.getElementsByClassName('num'));
-calculator.map(num =>{
-    num.addEventListener('click',(e) =>{
-       switch (e.target.innerText) {
-           case 'C':
-               display.innerText='';
-               break;
-       
-           default:
-               display.innerText+=e.target.innerText;
-               break;
-       }
+// fuction to get values 
+function OutPut (num) {
+    
+    inputField.value += num;
 
-    })
-})
+    enableBtn() //calling the enable function
+}
+
+// enable disabled button function 
+function enableBtn() {
+
+    const btn = document.getElementById('Btn')
+    
+    btn.removeAttribute('disabled') //remove disabled
+        
+}
+
+// equall to function
+function equalTo() {
+
+    try{
+        if (inputField.value === "") { 
+            return
+        }
+        
+        return inputField.value = eval(inputField.value); // eval does the calculation and gives us the result when we click on the submit botton
+    }
+    catch (error) {
+        alert('incorrect number')
+    }
+    
+}
+
+
+
+// clearing the input field 
+function Clear() {
+
+    inputField.value = "";
+}
+
+// function for deleting the values one by one 
+function Del() {
+    
+    inputField.value = inputField.value.slice(0, -1); //using the slice methodto delete it one by one
+}
